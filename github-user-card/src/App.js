@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react';
+import GitHubUserPage from './components /GithubUser/GitHubUserPage';
+import Header from './components /Header/Header';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Hello Github User</h1>
-      </div>
-    )
-  }
+function App() {
+  return (
+    <div className="App"> 
+      <Header />
+      <GitHubUserPage />
+    </div>
+  );
 }
+
+export default App;
