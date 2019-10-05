@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
+import axios from 'axios';
+  
 import GitHubUserNavBar from './GitHubUserNavBar';
 import Repositories from './Repositories';
 import Followers from './Followers';
@@ -9,21 +11,31 @@ export default class GitHubMainContainer extends Component {
     constructor(){
         super();
         this.state= ({
-            display:'following'
+            display:'following',
+            repos : []
         })
     }
     componentDidMount(){
+        this.getRepositories()
     }
     componentDidUpdate(prevState, prevProps){
-        console.log('Prev State: ', prevState, '\n', 'Prev Props', prevProps)
+        // console.log('Prev State: ', prevState, '\n', 'Prev Props', prevProps)
     }
     getNavItem = (e, item) =>{
         e.preventDefault();
-        console.log(item)
         this.setState({
             display: item
         })
     }
+        getRepositories = () =>{
+            axios.get(`${this.props.userInfo.repos_url}`)
+                .then(res=>{
+                    this.setState({
+                        repos : res.data 
+                    })
+                })
+                .catch(err=>{ console.log(err)})
+        }
     render() {
         return (
             <GitHubMainContainerStyles>
@@ -35,7 +47,9 @@ export default class GitHubMainContainer extends Component {
                 {
                     this.state.display === 'repositories'
                     ?
-                     <Repositories/>
+                     <Repositories
+                        repos = {this.state.repos}
+                     />
                      : ( 
                          this.state.display === 'followers' ?
                             <Followers /> :
