@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function GitHubUserNavBar() {
+function GitHubUserNavBar(props) {
 
     return (
         <NavStyles>
             <ul>
-                <li>Repositories</li>
-                <li>Followers</li>
-                <li>Following</li>
+                <li onClick={e=>{props.getNavItem(e, 'repository')}}>Repositories</li>
+                <li onClick={e=>{props.getNavItem(e, 'followers')}}>Followers</li>
+                <li onClick={e=>{props.getNavItem(e, 'following')}}>Following</li>
 
             </ul>
         </NavStyles>
@@ -33,5 +33,8 @@ const NavStyles = styled.div`
         list-style-type: none;
         bottom: 0px;
         padding: 10px;
+        li{
+            cursor: pointer;
+        }
     }
 `;

@@ -3,10 +3,23 @@ import styled from 'styled-components';
 import GitHubUserNavBar from './GitHubUserNavBar';
 
 export default class GitHubMainContainer extends Component {
+    constructor(){
+        super();
+        this.state= ({
+            display:'Repositories'
+        })
+    }
+    getNavItem = (e, item) =>{
+        e.preventDefault();
+        console.log(item)
+    }
     render() {
         return (
             <GitHubMainContainerStyles>
-                <GitHubUserNavBar />
+                <GitHubUserNavBar
+                    getNavItem={ this.getNavItem }
+                />
+
             </GitHubMainContainerStyles>
         )
     }
