@@ -3,30 +3,60 @@ import axios from 'axios';
 import styled from 'styled-components';
 import GitHubMainContainer from './GitHubMainContainer';
 import GitHubUserAside from './GitHubUserAside';
+import Loader from '../Loader';
 
 export default class GitHubUserPage extends Component {
     constructor(){
         super();
         this.state = {
-            name: 'lesleyfon'
+            name: 'lesleyfon',
+            userInfo:{}
         }
     }
+    componentDidUpdate(){
+      }
+
     componentDidMount(){
-        this.fetchGitHubUser('lesleyfon')
+        this.fetchGitHubUser(this.state.name);
     }
+    
     fetchGitHubUser = (name)=>{
-       axios.get(`https://api.github.com/users/lesleyfon`)
-        .then(res=>{console.log(res.data)})
+       axios.get(`https://api.github.com/users/${name}`)
+        .then(res=>{
+            this.setState({ userInfo: res.data }); 
+            console.log(res.data.organizations_url)
+            axios.get(`${res.data.organizations_url}`)
+                .then(resOrg=>{
+                    console.log(resOrg)
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+        })
         .catch(err=>{
             console.log(err)
         })
     }
     render() {
-        return (
-            <MainStyles>
-                <GitHubUserAside />
-                <GitHubMainContainer />
-            </MainStyles>
+
+        return (   
+            <>
+           
+              {
+                  Object.values(this.state.userInfo).length < 1 ?
+                    <Loader />
+                 :
+                 <> <MainStyles>
+                    <GitHubUserAside
+                    userInfo = {this.state.userInfo }
+                    />
+                    <GitHubMainContainer /> 
+                    </MainStyles>
+                </>
+            }
+            
+             </>   
+            
         )
     }
 }
@@ -35,5 +65,8 @@ export default class GitHubUserPage extends Component {
 const MainStyles = styled.div`
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    margin-top: 60px;
+    justify-content: center;
+    align-content: center;
+    align-items: center
 `;

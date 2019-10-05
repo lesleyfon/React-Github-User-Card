@@ -5,14 +5,14 @@ export default class GitHubMainContainer extends Component {
     render() {
         return (
             <GitHubMainContainerStyles>
-                <h12>Hello</h12>
+                <h1>Hello</h1>
             </GitHubMainContainerStyles>
         )
     }
 }
 
 const GitHubMainContainerStyles = styled.div`
-    width: 65%;
+    width: 935px;
     height: 100vh;
     background: lightgrey;
     border-left: 1px dashed black;
