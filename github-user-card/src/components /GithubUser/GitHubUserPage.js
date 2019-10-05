@@ -24,39 +24,41 @@ export default class GitHubUserPage extends Component {
        axios.get(`https://api.github.com/users/${name}`)
         .then(res=>{
             this.setState({ userInfo: res.data }); 
-            console.log(res.data.organizations_url)
-            axios.get(`${res.data.organizations_url}`)
-                .then(resOrg=>{
-                    console.log(resOrg)
-                })
-                .catch(err=>{
-                    console.log(err)
-                })
+            //Github Organisation, Complete later  ❌
+            // axios.get(`${res.data.organizations_url}`)
+            //     .then(resOrg=>{
+            //         console.log(resOrg)
+            //     })
+            //     .catch(err=>{
+            //         console.log(err)
+            //     })
         })
         .catch(err=>{
             console.log(err)
         })
     }
     render() {
-
         return (   
             <>
-           
-              {
-                  Object.values(this.state.userInfo).length < 1 ?
+                {
+                    Object.values(this.state.userInfo).length < 1 
+                    ?
                     <Loader />
-                 :
-                 <> <MainStyles>
-                    <GitHubUserAside
-                    userInfo = {this.state.userInfo }
-                    />
-                    <GitHubMainContainer /> 
-                    </MainStyles>
-                </>
-            }
-            
-             </>   
-            
+                     :
+                    <> 
+                        <MainStyles>
+                            <GitHubUserAside
+                                userInfo = {this.state.userInfo }
+                            />
+                            <GitHubMainContainer
+                                  userInfo = {this.state.userInfo }
+                            /> 
+                        </MainStyles>
+                    </>
+                }
+
+            </>   
+
         )
     }
 }

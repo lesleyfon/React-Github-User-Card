@@ -7,8 +7,8 @@ function GitHubUserNavBar(props) {
         <NavStyles>
             <ul>
                 <li onClick={e=>{props.getNavItem(e, 'repositories')}}>Repositories</li>
-                <li onClick={e=>{props.getNavItem(e, 'followers')}}>Followers</li>
-                <li onClick={e=>{props.getNavItem(e, 'following')}}>Following</li>
+                <li onClick={e=>{props.getNavItem(e, 'followers')}}>Followers {props.following}</li>
+                <li onClick={e=>{props.getNavItem(e, 'following')}}>Following {props.followers}</li>
 
             </ul>
         </NavStyles>

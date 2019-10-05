@@ -12,6 +12,11 @@ export default class GitHubMainContainer extends Component {
             display:'following'
         })
     }
+    componentDidMount(){
+    }
+    componentDidUpdate(prevState, prevProps){
+        console.log('Prev State: ', prevState, '\n', 'Prev Props', prevProps)
+    }
     getNavItem = (e, item) =>{
         e.preventDefault();
         console.log(item)
@@ -24,6 +29,8 @@ export default class GitHubMainContainer extends Component {
             <GitHubMainContainerStyles>
                 <GitHubUserNavBar
                     getNavItem={ this.getNavItem }
+                    followers = {this.props.userInfo.followers}
+                    following = {this.props.userInfo.following}
                 />
                 {
                     this.state.display === 'repositories'
