@@ -71,7 +71,7 @@ const RepositoriesStyles = styled.div`
 
        
 
-    h3:hover{
+    a:hover{
             text-decoration: underline;
             cursor: pointer;
     }

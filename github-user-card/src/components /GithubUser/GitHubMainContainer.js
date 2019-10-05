@@ -11,7 +11,7 @@ export default class GitHubMainContainer extends Component {
     constructor(){
         super();
         this.state= ({
-            display:'repositories',
+            display:'followers',
             repos : []
         })
     }
@@ -27,6 +27,7 @@ export default class GitHubMainContainer extends Component {
             display: item
         })
     }
+   
         getRepositories = () =>{
             axios.get(`${this.props.userInfo.repos_url}`)
                 .then(res=>{
@@ -52,7 +53,9 @@ export default class GitHubMainContainer extends Component {
                      />
                      : ( 
                          this.state.display === 'followers' ?
-                            <Followers /> :
+                            <Followers 
+                                followersUrl = {this.props.userInfo.followers_url}
+                            /> :
 
                             <Following />
                          )
