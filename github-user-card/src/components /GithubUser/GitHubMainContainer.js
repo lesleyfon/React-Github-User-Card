@@ -11,7 +11,7 @@ export default class GitHubMainContainer extends Component {
     constructor(){
         super();
         this.state= ({
-            display:'following',
+            display:'repositories',
             repos : []
         })
     }
@@ -66,6 +66,5 @@ export default class GitHubMainContainer extends Component {
 const GitHubMainContainerStyles = styled.div`
     width: 935px;
     height: 100vh;
-    border-left: 1px dashed black;
 `;
 

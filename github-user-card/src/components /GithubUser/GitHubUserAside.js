@@ -39,8 +39,7 @@ export default class  GitHubUserAside extends Component {
 const GitHubUserAsideStyles = styled.div`
     width: 312px;
     height: 100vh;
-    margin: 0px 50px 0px 0px;
-    border-right: 1px dashed black;
+    margin: 0px 20px 0px 0px;
     .avatarDiv{
         height: 300px;
         margin: 0 auto;
