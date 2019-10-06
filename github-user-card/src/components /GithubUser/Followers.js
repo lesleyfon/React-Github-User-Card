@@ -8,6 +8,7 @@ export class Followers extends Component {
     constructor(){
         super();
         this.state = ({
+
             followerData : []
         })
     }
@@ -15,7 +16,7 @@ export class Followers extends Component {
         this.getFollowers()
     }
     componentDidUpdate(){
-        console.log(this.state.followerData)
+
     }
     getFollowers(){
         axios.get(`${this.props.followersUrl}`)

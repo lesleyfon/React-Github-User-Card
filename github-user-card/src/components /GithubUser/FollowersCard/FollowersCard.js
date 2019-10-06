@@ -22,4 +22,8 @@ const CardStyles = styled.div`
         width: 100%;
         height: fit-content;
     }
+    h4{
+        color: #666666;
+        margin-left: 5px;
+    }
 `;
