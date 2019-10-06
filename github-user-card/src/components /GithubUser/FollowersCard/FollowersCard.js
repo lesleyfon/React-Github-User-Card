@@ -20,7 +20,7 @@ const CardStyles = styled.div`
     margin: 10px 0px;
     img{
         width: 100%;
-        height: fit-content;
+        height: 78%;
     }
     h4{
         color: #666666;
