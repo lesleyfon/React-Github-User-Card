@@ -1,7 +1,7 @@
 # Module Project: Component Lifecycle Methods - React Github User Card
 
 This project allows you to practice the concepts and techniques learned in this module and apply them in a concrete project. This module explored lifecycle methods in class components. In your project you will demonstrate proficiency of these concepts by recreating the Github User Card project, but as a React application this time.
-
+[Deploy site](https://5d995ffdd2bc3ca793b1dc12--trusting-wing-3453fe.netlify.com)
 ## Instructions
 
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this project.**
